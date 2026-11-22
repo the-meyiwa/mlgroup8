@@ -1,0 +1,28 @@
+# The config to quote in the report. Needs a GPU or patience.
+# ~10.7M non-embedding parameters at vocab 65.
+
+model:
+  block_size: 256
+  n_layer: 6
+  n_head: 6
+  n_embd: 384
+  dropout: 0.1
+  tie_weights: true
+
+train:
+  batch_size: 64
+  grad_accum: 1
+  max_steps: 5000
+  eval_interval: 250
+  eval_batches: 50
+  log_every: 25
+  lr: 0.0005
+  min_lr: 0.00005
+  warmup_steps: 200
+  weight_decay: 0.1
+  grad_clip: 1.0
+  seed: 1337
+  data_path: data/tinyshakespeare.txt
+  out_dir: runs/base
+  sample_prompt: "ROMEO: "
+  sample_tokens: 400

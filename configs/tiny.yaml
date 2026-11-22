@@ -1,0 +1,25 @@
+# Runs on a laptop CPU. Roughly one minute per 100 steps on 2 cores.
+# Purpose: prove the pipeline works end to end, not to produce a good model.
+
+model:
+  block_size: 128
+  n_layer: 4
+  n_head: 4
+  n_embd: 128
+  dropout: 0.0
+  tie_weights: true
+
+train:
+  batch_size: 32
+  max_steps: 1000
+  eval_interval: 100
+  eval_batches: 20
+  log_every: 25
+  lr: 0.0003
+  min_lr: 0.00003
+  warmup_steps: 50
+  seed: 1337
+  data_path: data/tinyshakespeare.txt
+  out_dir: runs/tiny
+  sample_prompt: "ROMEO: "
+  sample_tokens: 200

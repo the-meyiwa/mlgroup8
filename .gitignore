@@ -1,0 +1,14 @@
+# python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+*.egg-info/
+
+# data and runs: reproducible, never committed
+data/*.txt
+!data/sample.txt
+runs/
+*.pt
+*.pth
+wandb/
