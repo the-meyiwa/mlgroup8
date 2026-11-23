@@ -1,0 +1,31 @@
+{
+  "model_version": "361e8cbdf",
+  "algorithm": "GradientBoostingRegressor",
+  "metrics": {
+    "rmse": 4.039,
+    "mae": 2.723,
+    "r2": 0.9415
+  },
+  "metrics_basis": "10-fold cross-validation, shuffle=True, seed=42",
+  "features": [
+    "cement",
+    "blast_furnace_slag",
+    "fly_ash",
+    "water",
+    "superplasticizer",
+    "coarse_aggregate",
+    "fine_aggregate",
+    "age"
+  ],
+  "feature_order_hash": "c1e132f755e0",
+  "dataset_hash": "483dc12a5ad09f97fd26f6148c9a6bee15bb69c99ee620f58c1f2191a63dda22",
+  "dataset_rows": 1030,
+  "seed": 42,
+  "trained_at": "2026-11-23T20:45:09+00:00",
+  "versions": {
+    "python": "3.13.17",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.1.1",
+    "numpy": "2.5.5"
+  }
+}
