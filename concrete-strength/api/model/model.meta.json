@@ -1,5 +1,6 @@
 {
   "model_version": "d253b31cf",
+  "artifact_sha256": "d253b31cfd7faabdeace4bbe59856bfe16eeec1ee395e1a8ca02c0b4c77833d5",
   "algorithm": "GradientBoostingRegressor",
   "metrics": {
     "rmse": 3.792,

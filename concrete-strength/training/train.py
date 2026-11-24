@@ -119,13 +119,15 @@ def main() -> int:
     out = Path(args.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(best, out, compress=3)
-    version = sha256_file(out)[:9]
+    digest = sha256_file(out)
+    version = digest[:9]
 
     metrics = {
         k: float(table.iloc[0][k]) for k in ("rmse", "mae", "r2")
     }
     meta = {
         "model_version": version,
+        "artifact_sha256": digest,
         "algorithm": winner,
         "metrics": metrics,
         "metrics_basis": f"{FOLDS}-fold cross-validation, shuffle=True, seed={SEED}",
