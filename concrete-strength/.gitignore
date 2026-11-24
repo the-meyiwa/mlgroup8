@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/cc.zip
+data/Concrete_Data.xls
+.env
