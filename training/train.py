@@ -56,11 +56,15 @@ def candidates() -> dict[str, Pipeline]:
             [
                 (
                     "model",
+                    # Hyperparameters from training/tune.py (lowest CV RMSE of
+                    # 32 candidates). Selection used the same folds as scoring,
+                    # so this number is mildly optimistic in-sample-of-CV terms.
                     GradientBoostingRegressor(
-                        n_estimators=400,
-                        learning_rate=0.05,
+                        n_estimators=600,
+                        learning_rate=0.06,
                         max_depth=4,
-                        subsample=0.9,
+                        min_samples_leaf=3,
+                        subsample=0.8,
                         random_state=SEED,
                     ),
                 )
