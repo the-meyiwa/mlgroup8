@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# Runs the test suite and checks the model artefact hash before any push.
+set -euo pipefail
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+echo "pre-push: running test suite"
+python3 -m pytest tests -q
+
+echo "pre-push: checking model artefact hash"
+python3 - <<'PY'
+import json, hashlib, pathlib, sys
+meta = json.loads(pathlib.Path("api/model/model.meta.json").read_text())
+actual = hashlib.sha256(pathlib.Path("api/model/model.joblib").read_bytes()).hexdigest()
+recorded = meta.get("sha256") or meta.get("artifact_sha256")
+if recorded and recorded != actual:
+    sys.exit("model.joblib does not match the hash in model.meta.json")
+print("artefact ok", actual[:12])
+PY
+
+echo "pre-push: ok"
