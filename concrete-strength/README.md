@@ -1,5 +1,8 @@
 # Concrete Strength Predictor
 
+Lives in the https://github.com/the-meyiwa/mlgroup8 repository under `concrete-strength/`.
+Every command below is relative to that directory, so `cd concrete-strength` first.
+
 Estimates the compressive strength of a concrete mix (MPa) from eight mixture
 proportions, using a scikit-learn regression pipeline trained on the UCI
 Concrete Compressive Strength dataset (1,030 laboratory samples).

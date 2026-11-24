@@ -1,9 +1,18 @@
-name: ci
+name: concrete-strength-ci
 
 on:
   push:
     branches: [main]
+    paths:
+      - "concrete-strength/**"
+      - ".github/workflows/concrete-strength-ci.yml"
   pull_request:
+    paths:
+      - "concrete-strength/**"
+
+defaults:
+  run:
+    working-directory: concrete-strength
 
 jobs:
   test:

@@ -3,6 +3,10 @@
 Group 8's coursework repo: a small GPT-style language model trained from scratch, with the
 plumbing that makes results reportable instead of anecdotal.
 
+Two things live here: this language model, and `concrete-strength/`, a separate
+deliverable (compressive strength regression on the UCI 165 dataset) that used to have
+its own repository.
+
 Status: foundation. The model, data pipeline, training loop, checkpointing and tests work.
 No trained model is committed yet (see "Reproducing" below).
 
@@ -21,6 +25,8 @@ are used, so every number in this repo was produced by this repo.
     src/mlgroup8/   the package: config, tokenizer, model, training loop.
     tests/          shape, causality, determinism and overfit tests.
     runs/           checkpoints, metrics.jsonl and samples. Gitignored.
+    concrete-strength/  separate project: FastAPI service + Next.js form predicting
+                    concrete compressive strength. Own README, docs and tests.
 
 ## Setup
 
