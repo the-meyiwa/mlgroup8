@@ -1,0 +1,30 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: install
+        run: pip install -r api/requirements.txt -r training/requirements.txt pytest httpx
+      - name: tests
+        run: python -m pytest tests -q
+      - name: verify artefact matches sidecar
+        run: |
+          python - <<'PY'
+          import json, hashlib, pathlib
+          meta = json.loads(pathlib.Path("api/model/model.meta.json").read_text())
+          h = hashlib.sha256(pathlib.Path("api/model/model.joblib").read_bytes()).hexdigest()
+          recorded = meta.get("sha256") or meta.get("artifact_sha256")
+          print("recorded", recorded)
+          print("actual  ", h)
+          assert recorded in (None, h), "artefact does not match recorded hash"
+          PY
